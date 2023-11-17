@@ -861,6 +861,7 @@ void process_change(uint8_t *data_change,uint16_t data_len)
      }
     memset(data_t,'\0',20);
     //memset(all_buffer,'\0',90);
+    //
 }
 
 static int valor_timer=0;
