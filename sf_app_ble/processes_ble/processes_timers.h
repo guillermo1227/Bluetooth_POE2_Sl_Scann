@@ -9,9 +9,14 @@
 #define SF_APP_BLE_PROCESSES_BLE_PROCESSES_TIMERS_H_
 
 
-#define LED_BLUE                          WICED_P04
-#define LED_GREEN                         WICED_P05
-#define LED_RED                          WICED_P03
+#define LED_BLUE                          WICED_P08
+#define LED_GREEN                         WICED_P07
+//#define LED_RED                          WICED_P14
+#define LED_RED                          WICED_P04
+
+//#define LED_BLUE                          WICED_P04
+//#define LED_GREEN                         WICED_P05
+//#define LED_RED                          WICED_P03
 
 wiced_bool_t status_Online = WICED_TRUE;
 wiced_bool_t value_inspection=WICED_TRUE;

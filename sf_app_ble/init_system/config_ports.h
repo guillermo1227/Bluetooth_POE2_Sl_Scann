@@ -28,9 +28,16 @@
 //#define LED_GPIO_16                              WICED_P16
 //#define LED_GPIO_17                              WICED_P17
 //#define LED_GPIO_25                              WICED_P25
-#define LED_BLUE                          WICED_P04
-#define LED_GREEN                         WICED_P05
-#define LED_RED                          WICED_P03
+#define LED_BLUE                          WICED_P08
+#define LED_GREEN                         WICED_P07
+//#define LED_RED                          WICED_P14
+#define LED_RED                          WICED_P04
+
+//#define LED_BLUE                          WICED_P04
+//#define LED_GREEN                         WICED_P05
+//#define LED_RED                          WICED_P03
+
+
 
 
 extern void button_cback_26( void *data, uint8_t port_pin );

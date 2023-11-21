@@ -15,7 +15,7 @@ uint8_t 	dataFiltm[6];   //6   usados en el nombre
 uint8_t 	length3,length4;        //   usado en el UID
 uint8_t *   p_data,* p_data4;
 //unsigned char data_ma_save2[93];
-char nombre[5][13], UID[5][11], URL[5][13],flag_name[5],flag_uid[5],flag_url[5];
+char nombre[maax_size][13], UID[maax_size][11], URL[maax_size][13],flag_name[maax_size],flag_uid[maax_size],flag_url[maax_size];
 
 /*Funcion usada en el scanner de Bluetooth*/
 static void Observer_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, uint8_t *p_adv_data );

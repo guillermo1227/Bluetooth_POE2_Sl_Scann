@@ -27,6 +27,7 @@ void start_call_back_scanner(int savetime);
 void stop_scanner(void);
 extern void timer_init_scann(char data2[],char data3[]);
 char scanner_name[5];
+extern void init_timer(void);
 
 
 #endif /* LIBRERIAS_OBSERV_H_ */

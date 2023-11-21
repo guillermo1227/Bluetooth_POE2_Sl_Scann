@@ -21,7 +21,12 @@ unsigned char data3[10];
 #define Change_GATEWAY "CGA"
 #define Cchange_DNS1 "CD1"
 #define Cchange_DNS2 "CD2"
+#define hola "Chola"
 
+#define DHCP "DHCP"
+
+#define TIP "TIP"
+#define TPort "TPORT"
 /*
  * 							Variables globales usadas en el UART para saber el estado de UUID
  */

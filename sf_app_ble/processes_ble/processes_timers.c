@@ -337,7 +337,7 @@ void      f_timer_CER( uint32_t data )
 extern void start_Timer_led(void);  //LED VERDE
 void f_timer_LedIP( uint32_t data )
 {
-wiced_hal_gpio_set_pin_output( LED_GREEN, ~(wiced_hal_gpio_get_pin_input_status(LED_GREEN)));
+wiced_hal_gpio_set_pin_output( LED_RED, ~(wiced_hal_gpio_get_pin_input_status(LED_RED)));
 start_Timer_led();
 }
 

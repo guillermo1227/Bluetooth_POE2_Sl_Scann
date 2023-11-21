@@ -37,9 +37,6 @@
 #include "wiced_bt_mesh_core.h"
 #include "config_timers.h"
 
-#define LED_BLUE                          WICED_P04
-#define LED_GREEN                         WICED_P05
-#define LED_RED                          WICED_P03
 
 wiced_timer_t timer_count_RSSI; //Mi timer
 

@@ -396,8 +396,11 @@ void app_set_advertisement_data(void)
     num_elem++;
 
     adv_elem[num_elem].advert_type  = BTM_BLE_ADVERT_TYPE_NAME_COMPLETE;
-    adv_elem[num_elem].len          = strlen((const char *)app_cfg_settings.device_name);
-    adv_elem[num_elem].p_data       = (uint8_t*)app_cfg_settings.device_name;
+    adv_elem[num_elem].len          = strlen((const char *)"OTA POE");
+    adv_elem[num_elem].p_data       = (uint8_t*)"OTA POE";
+//    adv_elem[num_elem].advert_type  = BTM_BLE_ADVERT_TYPE_NAME_COMPLETE;
+//    adv_elem[num_elem].len          = strlen((const char *)app_cfg_settings.device_name);
+//    adv_elem[num_elem].p_data       = (uint8_t*)app_cfg_settings.device_name;
     num_elem++;
 
     wiced_bt_ble_set_raw_advertisement_data(num_elem, adv_elem);

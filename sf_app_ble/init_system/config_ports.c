@@ -28,6 +28,10 @@ void set_outPuts(void)
     wiced_hal_gpio_configure_pin( LED_GREEN, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_HIGH);
     wiced_hal_gpio_configure_pin( LED_BLUE, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_HIGH);
 
+    wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);  //LOW es encenndido
+    wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
+    wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
+
 
     //wiced_hal_gpio_set_pin_output(LED3, 1);
 

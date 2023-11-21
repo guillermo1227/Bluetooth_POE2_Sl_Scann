@@ -19,8 +19,14 @@
 #define clock_alrm         350
 #define clock_EA           4
 
+//#define LED_BLUE                          WICED_P04
+//#define LED_GREEN                         WICED_P05
+//#define LED_RED                          WICED_P03
 
-
+#define LED_BLUE                          WICED_P08
+#define LED_GREEN                         WICED_P07
+//#define LED_RED                          WICED_P14
+#define LED_RED                          WICED_P04
 
 void config_clk_timers(void);
 void start_BTimers(void);

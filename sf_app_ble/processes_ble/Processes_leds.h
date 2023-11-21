@@ -12,11 +12,17 @@
 #include "wiced_hal_gpio.h"
 #include <string.h>
 
-#define LED_BLUE                          WICED_P04
-#define LED_GREEN                         WICED_P05
-#define LED_RED                          WICED_P03
+#define LED_BLUE                          WICED_P08
+#define LED_GREEN                         WICED_P07
+//#define LED_RED                          WICED_P14
+#define LED_RED                          WICED_P04
+
+//#define LED_BLUE                          WICED_P04
+//#define LED_GREEN                         WICED_P05
+//#define LED_RED                          WICED_P03
 
 void process_led(char texto_global[]);
+void wrong_configuration(char texto_global[]);
 extern void start_Timer_led(void);
 extern void start_Timer_led2(void);
 extern void start_Timer_led3(void);

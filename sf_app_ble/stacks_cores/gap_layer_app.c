@@ -352,6 +352,15 @@ static wiced_bt_gatt_status_t	app_gatt_set_value( wiced_bt_gatt_write_t *p_data 
        	     //WICED_BT_TRACE("\n longitud %d \n",len);
        	     //p_data->p_val=0;  //borro el puntero de aqui
        	break;
+    //Procedimiento 2
+    case 'D':
+    		process_change(p_val,len);
+    	break;
+    /****** Configuracion de cliente TCP/IP ******/
+    case 'T':
+    		process_change(p_val,len);
+    	break;
+
     }
     //wiced_bt_spp_send_session_data(handle, "Data Set: ", 10);
     //wiced_bt_spp_send_session_data(handle, p_data, data_len);
@@ -413,12 +422,12 @@ void set_data_base(void)
 	data_select[c].value_d=(data_select[c].value_n%100-data_select[c].value_n%10)/10;
 	data_select[c].value_u=data_select[c].value_n%10;
 
-	WICED_BT_TRACE("Data D:%d, U:%d\n ", data_select[1].value_d, data_select[c].value_u );
+	//WICED_BT_TRACE("Data D:%d, U:%d\n ", data_select[1].value_d, data_select[c].value_u );          //---------------------------->
 
 	data_select[c].value_dt=((data_select[c].value_d)%10)+48;
 	data_select[c].value_ut=data_select[c].value_u+48;
 
-	WICED_BT_TRACE("Data_T DT:%d, UT:%d\n ", data_select[c].value_dt, data_select[c].value_ut );
+	//WICED_BT_TRACE("Data_T DT:%d, UT:%d\n ", data_select[c].value_dt, data_select[c].value_ut );    //---------------------------->
 	}
 
 
@@ -463,7 +472,7 @@ void set_data_base(void)
 	uint16_t len = 			15;
 
 
-	WICED_BT_TRACE("Data RSSI: %B\n ", p_val );
+	//WICED_BT_TRACE("Data RSSI: %B\n ", p_val );   					//---------------------------->
 
 	int i = 0;
     wiced_bool_t validLen = WICED_FALSE;
@@ -753,6 +762,18 @@ void rx_cback( void *data )
 		        						{
 		        						process_led(texto_global);
 		        						}
+		        								else if(first_word[0] == 'I')
+		        								{
+		        									wrong_configuration(texto_global);
+		        								}
+		        									else if(first_word[0] == 'S')
+		        									{
+		        										wrong_configuration(texto_global);
+		        									}
+		        										else if(first_word[0] == 'D')
+		        										{
+		        											wrong_configuration(texto_global);
+		        										}
 		        								//else if(strstr(texto_global, "reboot"))wiced_hal_wdog_reset_system ();
 		        								else WICED_BT_TRACE("\n Wrong comand.....");
 
@@ -775,13 +796,12 @@ void rx_cback( void *data )
 //    memset(Uart_BuffRX,'\0',64);
 }
 
-char data_t[20], all_buffer[90]={"ChangeIP: "};
-uint8_t flag_send_mac=0;
+char data_t[20], all_buffer[90]={"ChangeIP: "}, TCP_IP_buffer[30]= {"ServerIP: "};
+uint8_t flag_send_mac=0, flag_TCP_IP=0;
 void process_change(uint8_t *data_change,uint16_t data_len)
 {
 	/*  LLega un C  */
-	//WICED_BT_TRACE("\n ************* Change_data ************* \n");
-
+	/*  Comandos normales para cambiar mac e IP */
 	memset(data_t,'\0',20);  /*  Borro lo que llega  */
     memcpy(data_t,data_change ,data_len);
 
@@ -849,16 +869,44 @@ void process_change(uint8_t *data_change,uint16_t data_len)
     			init_timer();
     			flag_send_mac = 5;
     		}
+    else if(memcmp(hola,data_t, 5)== 0)
+    {
+    	prender_leeds();
+    }
 
      if(flag_send_mac == 5)
      {
-    	 WICED_BT_TRACE("\n%s %s %s %s %s\n", all_buffer, &all_buffer[26], &all_buffer[42],&all_buffer[58],&all_buffer[74]);
+    	 WICED_BT_TRACE("%s %s %s %s %s\n", all_buffer, &all_buffer[26], &all_buffer[42],&all_buffer[58],&all_buffer[74]);
     	 //WICED_BT_TRACE("\n%s %s %s %s %s %s\n","ChangeIP:", "111.111.11.1", "222.222.254.222","333.333.333.333","444.444.444.444", "555.555.555.555");
     	 /* Prendido y apagado de Led de recepcion de datos */
     	 wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
     	 init_timer();
     	 flag_send_mac = 0;
      }
+
+     /* Implementacion 2 */
+     if(memcmp(DHCP,data_t, 4)== 0)
+     {
+    	 WICED_BT_TRACE("ChangeIP: DHCP\n");
+     }
+
+     /********  Configuracion de cliente TCP/IP  *********/
+     if(memcmp(TIP,data_t, 3)== 0)
+          {
+    	 	 /* Borro ese espcacio de memoria */
+    	 	 memset(&TCP_IP_buffer[10],'\0',15);
+    	 	 memcpy(&TCP_IP_buffer[10],&data_t[4],strlen(data_t));
+    	 	//flag_TCP_IP=1;
+          }
+     else if(memcmp(TPort,data_t, 5)== 0)                                 //ServerIP: 111.111.111.111 XXXX
+               {
+         	 	 /* Borro ese espcacio de memoria */
+         	 	 memset(&TCP_IP_buffer[26],'\0',4);
+         	 	 memcpy(&TCP_IP_buffer[26],&data_t[6],strlen(data_t));
+         	 	 WICED_BT_TRACE("%s %s\n",TCP_IP_buffer, &TCP_IP_buffer[26]);
+         	 	//flag_TCP_IP=1;
+               }
+
     memset(data_t,'\0',20);
     //memset(all_buffer,'\0',90);
     //
