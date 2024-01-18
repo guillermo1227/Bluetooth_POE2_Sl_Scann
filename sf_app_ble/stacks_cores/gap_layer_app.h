@@ -73,6 +73,9 @@ void                            beacon_set_app_advertisement_data3(void);
 void                            gap_transferER(void);
 void                            set_data_base(void);
 
+void 							prender_leeds(void);
+void 							successful_data(void);
+
 extern void	                    config_Transceiver(void);
 extern void                     init_config_logs(void);
 extern void                     init_mac_logs(void);
@@ -92,7 +95,10 @@ extern void                     start_BTimers2(void);
 extern void process_SOM(uint8_t *data_S_OM);
 extern void process_change(uint8_t *data_S_OM,uint16_t data_len);   //Mio para mandar los datos enviados por la aplicación
 extern void 					init_timer(void);      //Timer para blinkear led 26 cuando se mandan datos
+extern void 					choos_what_scaner(char texto_global[], unsigned char data2[],unsigned char data3[]);
 
 extern void start_call_back_scanner(int time);
+extern void process_led(char texto_global[]);
+extern void wrong_configuration(char texto_global[]);
 
 #endif /* SF_APP_BLE_STACKS_CORES_GAP_LAYER_APP_H_ */

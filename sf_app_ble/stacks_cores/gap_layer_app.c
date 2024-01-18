@@ -33,7 +33,7 @@
 #include "app_bt_utils.h"
 #include "wiced_transport.h"
 #include "sparcommon.h"
-
+#include "config_ports.h"
 
 
 
@@ -500,7 +500,7 @@ void set_data_base(void)
                 {
                 	case HDLC_STV_CONFIG_VALUE:
 						//wiced_hal_gpio_set_pin_output(LED2, !(app_stv_config[0]) );
-						WICED_BT_TRACE( "Turn the LED %s\r\n", app_stv_config[0] ? "ON" : "OFF" );
+						//WICED_BT_TRACE( "Turn the LED %s\r\n", app_stv_config[0] ? "ON" : "OFF" );
 						break;
                 }
             }
@@ -713,8 +713,15 @@ extern void process_ODT(uint8_t *data_ODT);
 extern void process_SOM(uint8_t *data_S_OM);
 
 
-
-
+/**
+ * Function name: rx_cback( void *data )
+ *
+ * Sumary: Function to compare the text entered by the UART, all the
+ * text entered is saved in the variable texto_global[ ]
+ *
+ * @param char *data
+ * @return void
+ */
 void rx_cback( void *data )
 {
 	/* There can be at most 16 bytes in the HW FIFO.*/
@@ -728,12 +735,11 @@ void rx_cback( void *data )
 		         // this will wait for tx fifo empty before queueing byte
 		         wiced_hal_puart_synchronous_write(&readbyte,1);
 		         value=readbyte;
-		         //WICED_BT_TRACE("%c", value);
 
 		         if(readbyte == '\n')
 		         {
 		        	texto_global[l]='\0';
-		        	WICED_BT_TRACE("\n total:%s",texto_global);
+		        	//WICED_BT_TRACE("\n total:%s",texto_global); ********
 		        	l=0;
 		         }
 		         else
@@ -743,39 +749,45 @@ void rx_cback( void *data )
 		        	l++;
 		         }
 		    	}
+	 /* ************************************************************ */
 
-		    	char first_word[12];
+	 /* ************************************************************ */
+		    	char first_word[12]; /* ServerIP is good*/
 		    	memcpy(first_word,texto_global,11);
-		    	WICED_BT_TRACE("|%d %d|",strlen(first_word),strlen("set scanner"));
-		        	if(memcmp(first_word,"set scanner", sizeof("set scanner"))==0)
-		        	{
-		        		choos_what_scaner(texto_global, data2,data3);
-		        	}
-		        				else if(memcmp(first_word,"keep",strlen("keep"))==0)
-		                        {
-		                        	wiced_hal_write_nvram( WICED_NVRAM_VSID_START+1, sizeof(data_ma_save2), &data_ma_save2[0], &status111 );
-		                        	wiced_hal_write_nvram( WICED_NVRAM_VSID_START+2, sizeof(data2), &data2[0], &status22 );
-		                        	wiced_hal_write_nvram( WICED_NVRAM_VSID_START+3, sizeof(data3), &data3[0], &status33 );
-		                        	WICED_BT_TRACE("\n Information stored in EEPROM \n");
-		                        }
-		        						else if(first_word[0] == 'E')
-		        						{
-		        						process_led(texto_global);
-		        						}
-		        								else if(first_word[0] == 'I')
-		        								{
-		        									wrong_configuration(texto_global);
-		        								}
-		        									else if(first_word[0] == 'S')
-		        									{
-		        										wrong_configuration(texto_global);
-		        									}
-		        										else if(first_word[0] == 'D')
-		        										{
-		        											wrong_configuration(texto_global);
-		        										}
-		        								//else if(strstr(texto_global, "reboot"))wiced_hal_wdog_reset_system ();
-		        								else WICED_BT_TRACE("\n Wrong comand.....");
+
+		    	if(memcmp(first_word,"set scanner", sizeof("set scanner"))==0)
+		    	{
+		    		choos_what_scaner(texto_global, data2, data3);
+		        }
+		    	else if(memcmp(first_word,"keep",strlen("keep"))==0)
+		    	{
+		    		wiced_hal_write_nvram( WICED_NVRAM_VSID_START+1, sizeof(data_ma_save2), &data_ma_save2[0], &status111 );
+		    		wiced_hal_write_nvram( WICED_NVRAM_VSID_START+2, sizeof(data2), &data2[0], &status22 );
+		    		wiced_hal_write_nvram( WICED_NVRAM_VSID_START+3, sizeof(data3), &data3[0], &status33 );
+		    		WICED_BT_TRACE("\n Information stored in EEPROM \n");
+		    	}
+		    	else if(first_word[0] == 'E')
+		    	{
+		    		process_led(texto_global);
+		    	}
+		    	else if(first_word[0] == 'I')
+		    	{
+		    		wrong_configuration(texto_global);
+		    	}
+		    	else if(first_word[0] == 'S')
+		    	{
+		    		wrong_configuration(texto_global);
+		    	}
+		    	else if(first_word[0] == 'D')
+		    	{
+		    		wrong_configuration(texto_global);
+		    	}
+		    	else if(first_word[0] == 'C')
+		    	{
+		    		successful_data();
+		    	}
+		    		//else if(strstr(texto_global, "reboot"))wiced_hal_wdog_reset_system ();
+		    	//else WICED_BT_TRACE("\n Wrong comand.....");
 
 		        //Limpio todo
 		        memset(first_word,'\0',12);
@@ -871,16 +883,15 @@ void process_change(uint8_t *data_change,uint16_t data_len)
     		}
     else if(memcmp(hola,data_t, 5)== 0)
     {
-    	prender_leeds();
+    	//prender_leeds();
     }
 
      if(flag_send_mac == 5)
      {
     	 WICED_BT_TRACE("%s %s %s %s %s\n", all_buffer, &all_buffer[26], &all_buffer[42],&all_buffer[58],&all_buffer[74]);
-    	 //WICED_BT_TRACE("\n%s %s %s %s %s %s\n","ChangeIP:", "111.111.11.1", "222.222.254.222","333.333.333.333","444.444.444.444", "555.555.555.555");
-    	 /* Prendido y apagado de Led de recepcion de datos */
     	 wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
-    	 init_timer();
+    	 //init_timer();
+    	 //successful_data();
     	 flag_send_mac = 0;
      }
 
@@ -888,6 +899,7 @@ void process_change(uint8_t *data_change,uint16_t data_len)
      if(memcmp(DHCP,data_t, 4)== 0)
      {
     	 WICED_BT_TRACE("ChangeIP: DHCP\n");
+    	 //successful_data();
      }
 
      /********  Configuracion de cliente TCP/IP  *********/
@@ -903,8 +915,8 @@ void process_change(uint8_t *data_change,uint16_t data_len)
          	 	 /* Borro ese espcacio de memoria */
          	 	 memset(&TCP_IP_buffer[26],'\0',4);
          	 	 memcpy(&TCP_IP_buffer[26],&data_t[6],strlen(data_t));
-         	 	 WICED_BT_TRACE("%s %s\n",TCP_IP_buffer, &TCP_IP_buffer[26]);
-         	 	//flag_TCP_IP=1;
+         	 	 WICED_BT_TRACE("ServerIP: %s %s\n",&TCP_IP_buffer[10], &TCP_IP_buffer[26]);
+         	 	//successful_data();
                }
 
     memset(data_t,'\0',20);
@@ -912,11 +924,10 @@ void process_change(uint8_t *data_change,uint16_t data_len)
     //
 }
 
+/* Values ​​set by the scanner when the keep command is sentValues ​​set by the scanner when the keep button is pressed through the UART */
 static int valor_timer=0;
-/* Valores puestos por el scanner cuando se preciona el boton de KKEP*/
 extern void f_timer_NVRAM(TIMER_PARAM_TYPE arg)
 {
-	//Poner las inicializaciones hechas en scanner
 				    numbytes2 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+2, sizeof(data2), &data2[0], &status2 );
 				    numbytes3 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+3, sizeof(data3), &data3[0], &status3 );
 				    timer_init_scann(data2,data3);

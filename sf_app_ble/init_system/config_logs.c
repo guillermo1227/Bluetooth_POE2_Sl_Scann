@@ -37,6 +37,7 @@
 #include "wiced_bt_mesh_core.h"
 #include "config_logs.h"
 
+wiced_bt_device_address_t bda;
 
 void   init_config_logs(void)
 {
@@ -245,6 +246,16 @@ void init_mac_logs(void)
 //		wiced_bt_ble_address_type_t  macc= BLE_ADDR_PUBLIC_ID;
 //
 //	    wiced_bt_set_local_bdaddr(bda,macc);
+	bda[0]=0xAC;
+	bda[1]=0x32;
+	bda[2]=0x27;
+	bda[3]=0xBD;
+	bda[4]=0x45;
+	bda[5]=0x32;
+
+	wiced_bt_ble_address_type_t  macc= BLE_ADDR_PUBLIC_ID;
+
+	wiced_bt_set_local_bdaddr(bda,macc);
 
 }
 

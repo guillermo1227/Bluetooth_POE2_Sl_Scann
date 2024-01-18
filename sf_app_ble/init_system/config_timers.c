@@ -58,20 +58,25 @@ wiced_timer_t timer_ach;
 wiced_timer_t timer_cer;
 
 wiced_timer_t timer_ip;
+wiced_timer_t timer_ip_new;
 wiced_timer_t timer_mac;
 wiced_timer_t timer_coenction;
 wiced_timer_t timer_error;
 wiced_timer_t timer_NVRAM;
+
 
 void config_clk_timers(void)
 {
 
     wiced_init_timer( &timer_gap, f_gap, 0, WICED_SECONDS_TIMER);
     wiced_init_timer( &timer_ip, f_timer_LedIP, 0, WICED_MILLI_SECONDS_TIMER);
+    wiced_init_timer( &timer_ip_new, f_timer_LedIP_new, 0, WICED_MILLI_SECONDS_TIMER);
+
     wiced_init_timer( &timer_mac, f_timer_LedMAC, 0, WICED_MILLI_SECONDS_TIMER);
     wiced_init_timer( &timer_coenction, f_timer_LedConection, 0, WICED_MILLI_SECONDS_TIMER);
     wiced_init_timer( &timer_error, f_timer_LedError, 0, WICED_MILLI_SECONDS_TIMER);
     wiced_init_timer ( &timer_NVRAM, f_timer_NVRAM, 0, WICED_SECONDS_PERIODIC_TIMER);
+
 
 }
 
@@ -213,9 +218,12 @@ void start_TreturnCER(void)
 	wiced_start_timer( &timer_cer, 7000);
 }
 /*  -------------------------------------------*/ /*   Timers used in the aplication of POE   */
-void start_Timer_led(void)
+void start_Timer_led(uint8_t num)
 {
-	wiced_start_timer(&timer_ip, 800);
+	if(num==1)
+	wiced_start_timer(&timer_ip, 200);
+	else
+	wiced_start_timer(&timer_ip_new, 500);
 }
 
 void stop_Timer_led(void)
@@ -244,8 +252,18 @@ void stop_Timer_led3(void)
 }
 
 static int error = 0;
+extern uint8_t flag_error, queue;
 uint8_t type_error_take;
-/*  Timer ERROR  */
+
+/**
+ * This function evaluates the type of error
+ * that is present in the POE, type_error
+ * defines the type of error.
+ *
+ * @param uint8_t type_error
+ *
+ * return none
+ */
 void start_Timer_Error(uint8_t type_error)
 {
 	type_error_take = type_error;
@@ -265,6 +283,9 @@ void start_Timer_Error(uint8_t type_error)
 				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
 				wiced_start_timer(&timer_error, 1000);
 				error = -1;
+				//WICED_BT_TRACE("\n Bajo la bandera en TE1 \n");
+				flag_error=0;
+				queue=2;
 			}
 	}
 	if(type_error == 2)
@@ -292,7 +313,10 @@ void start_Timer_Error(uint8_t type_error)
 					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
 					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
 					wiced_start_timer(&timer_error, 1000);
+					flag_error=0;
+					/* Under the flag in TE2 */
 					error = -1;
+					queue=2;
 				}
 		}
 	if(type_error == 3)
@@ -321,6 +345,9 @@ void start_Timer_Error(uint8_t type_error)
 						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
 						wiced_start_timer(&timer_error, 1000);
 						error = -1;
+						/* Under the flag in TE3 */
+						flag_error=0;
+						queue=2;
 					}
 			}
 

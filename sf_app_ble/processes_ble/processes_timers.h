@@ -7,13 +7,13 @@
 
 #ifndef SF_APP_BLE_PROCESSES_BLE_PROCESSES_TIMERS_H_
 #define SF_APP_BLE_PROCESSES_BLE_PROCESSES_TIMERS_H_
+#include "config_ports.h"
 
+//#define LED_BLUE                          WICED_P08
+//#define LED_GREEN                         WICED_P07
+//#define LED_RED                          WICED_P04
 
-#define LED_BLUE                          WICED_P08
-#define LED_GREEN                         WICED_P07
-//#define LED_RED                          WICED_P14
-#define LED_RED                          WICED_P04
-
+/* Tarjeta verde */
 //#define LED_BLUE                          WICED_P04
 //#define LED_GREEN                         WICED_P05
 //#define LED_RED                          WICED_P03
@@ -53,7 +53,8 @@ void                            f_timer_er( uint32_t data );
 void                            f_timer_ach( uint32_t data );
 void                            f_timer_CER( uint32_t data );
 
-void                            f_timer_LedIP( uint32_t data );   // ---------------->*******
+void                            f_timer_LedIP( uint32_t data );
+void                            f_timer_LedIP_new( uint32_t data );
 
 extern void start_TOnline(void);
 extern void start_TOnline_long(void);
@@ -74,3 +75,4 @@ extern void clear_cer(void);
 extern void stop_count_RSSI(void);
 
 #endif /* SF_APP_BLE_PROCESSES_BLE_PROCESSES_TIMERS_H_ */
+

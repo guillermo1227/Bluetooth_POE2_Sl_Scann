@@ -7,7 +7,7 @@
 
 #ifndef SF_APP_BLE_INIT_SYSTEM_CONFIG_TIMERS_H_
 #define SF_APP_BLE_INIT_SYSTEM_CONFIG_TIMERS_H_
-
+#include "config_ports.h"
 
 #define clock_Online       1000
 #define clock_st_Online    8000
@@ -19,14 +19,14 @@
 #define clock_alrm         350
 #define clock_EA           4
 
+//#define LED_BLUE                          WICED_P08
+//#define LED_GREEN                         WICED_P07
+//#define LED_RED                          WICED_P04
+
+/* Tarjeta verde */
 //#define LED_BLUE                          WICED_P04
 //#define LED_GREEN                         WICED_P05
 //#define LED_RED                          WICED_P03
-
-#define LED_BLUE                          WICED_P08
-#define LED_GREEN                         WICED_P07
-//#define LED_RED                          WICED_P14
-#define LED_RED                          WICED_P04
 
 void config_clk_timers(void);
 void start_BTimers(void);
@@ -54,6 +54,7 @@ void Stop_Timerach(void);
 void start_TreturnCER(void);
 void star_count_RSSI(void);  // Conteo del timepo de frecuencia de RSSI
 void stop_count_RSSI(void);
+void stop_Timer_led(void);
 
 extern void      f_count_RSSI( uint32_t data );   // Funcion el timer externa
 extern void      f_timer_Online( uint32_t data );
@@ -81,11 +82,15 @@ static wiced_timer_t beacon_timer2;
 extern unsigned char data_ma_save[93]; //57 a 93 para nombre y URL y UID
 
 extern void      f_timer_LedIP( uint32_t data );
+extern void      f_timer_LedIP_new( uint32_t data );
+
 extern void      f_timer_LedMAC( uint32_t data );
 extern void      f_timer_LedConection( uint32_t data );
 extern void      f_timer_LedError( uint32_t data );
 extern void      f_timer_NVRAM( TIMER_PARAM_TYPE arg );
 extern void 	 stop_timer_NVRAM(void);
+extern void      f_timer_IPON( TIMER_PARAM_TYPE arg );
+extern void      stop_timer_IPON( void );
 
 extern uint16_t        numbytes1,numbytes2,numbytes3, numbytes_mac;
 extern wiced_result_t  status1,status2,status3, status_mac;

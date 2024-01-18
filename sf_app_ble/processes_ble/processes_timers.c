@@ -334,11 +334,20 @@ void      f_timer_CER( uint32_t data )
 }
 
 /*     Timers para LEEDS   */
-extern void start_Timer_led(void);  //LED VERDE
+extern void start_Timer_led(uint8_t num);  //LED VERDE
+extern uint8_t queue;
 void f_timer_LedIP( uint32_t data )
 {
 wiced_hal_gpio_set_pin_output( LED_RED, ~(wiced_hal_gpio_get_pin_input_status(LED_RED)));
-start_Timer_led();
+queue=0;
+stop_Timer_led();
+}
+
+extern void start_Timer_led(uint8_t num);
+void f_timer_LedIP_new( uint32_t data )
+{
+wiced_hal_gpio_set_pin_output( LED_RED, ~(wiced_hal_gpio_get_pin_input_status(LED_RED)));
+start_Timer_led(2);
 }
 
 extern void start_Timer_led2(void);
@@ -351,7 +360,6 @@ void f_timer_LedMAC( uint32_t data)
 extern void start_Timer_led3(void);
 extern void f_timer_LedConection( uint32_t data)
 {
-	//wiced_hal_gpio_set_pin_output( LED3, ~(wiced_hal_gpio_get_pin_input_status(LED3)));
 	wiced_hal_gpio_set_pin_output( LED_RED, ~(wiced_hal_gpio_get_pin_input_status(LED_RED)));
 	wiced_hal_gpio_set_pin_output( LED_BLUE, ~(wiced_hal_gpio_get_pin_input_status(LED_BLUE)));
 

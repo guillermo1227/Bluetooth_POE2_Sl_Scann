@@ -1,16 +1,16 @@
 Loading the ModusToolbox Technology Packs and Early Access Packs
 Finished loading the ModusToolbox Technology Packs and Early Access Packs (0 ms)
 Loading the tools information
-Finished loading the tools information (35 ms)
+Finished loading the tools information (39 ms)
 directory 'C:/ProgramData/Infineon_Technologies_AG/Infineon-Toolbox' does not exist
 Using the executable path for the tools directory.
 Loading the application in directory 'C:/Users/Usuario1/mtw/BLE2_POE_V3.0_C'
 using cached data from file 'C:/Users/Usuario1/mtw/BLE2_POE_V3.0_C/.mtbqueryapi'
 creating application information from 'get_app_info' data
-finished creating application information from 'get_app_info' data (21 ms)
-Finished loading the application data (61 ms total, 0 make)
+finished creating application information from 'get_app_info' data (50 ms)
+Finished loading the application data (134 ms total, 0 make)
 Loading asset repository references
-Finished loading the asset repository references (917 ms)
+Finished loading the asset repository references (641 ms)
 Loading the manifest data
 Loading super manfiest files from all sources
 Getting manifests from remote and/or local sources
@@ -82,9 +82,9 @@ Finished download of file 'https://github.com/CyberonEBU/cyberon-mtb-mw-manifest
 Finished download of file 'https://github.com/golioth/mtb-golioth-mw-manifest/raw/main/mtb-golioth-mw-manifest-fv2.xml'
 Finished download of file 'https://github.com/memfault/mtb-memfault-mw-manifest/raw/main/mtb-memfault-mw-manifest-fv2.xml'
 Finished download of file 'https://github.com/sensiml/sensiml-mw-manifest/raw/main/sensiml-mw-manifest-fv2.xml'
-Finished loading the manifest data (11601 ms)
+Finished loading the manifest data (3412 ms)
 Loading the device db
-Finished loading the device db (12034 ms)
+Finished loading the device db (2117 ms)
 the application environment had an empty 'MTB_CACHE_DIR', assuming default location
 the application environment had an empty 'MTB_OFFLINE_DIR', assuming default location
 the application environment had an empty 'MTB_GLOBAL_DIR', assuming default location
@@ -166,93 +166,92 @@ Starting to fetch assets for the project directory 'C:/Users/Usuario1/mtw/BLE2_P
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-include/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-include/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 fetch cypress --tags --force --quiet
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 fetch cypress --tags --force --quiet
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0 fetch cypress --tags --force --quiet
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 fetch cypress --tags --force --quiet
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 fetch cypress --tags --force --quiet
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 fetch cypress --tags --force --quiet
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 fetch cypress --tags --force --quiet
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0 fetch cypress --tags --force --quiet
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 fetch cypress --tags --force --quiet
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 fetch cypress --tags --force --quiet
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 fetch cypress --tags --force --quiet
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 fetch cypress --tags --force --quiet
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 fetch cypress --tags --force --quiet
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 fetch cypress --tags --force --quiet
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-include/release-v4.2.1 fetch cypress --tags --force --quiet
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 fetch cypress --tags --force --quiet
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 fetch cypress --tags --force --quiet
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 fetch cypress --tags --force --quiet
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-include/release-v4.2.1 fetch cypress --tags --force --quiet
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 fetch cypress --tags --force --quiet
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 fetch cypress --tags --force --quiet
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 fetch cypress --tags --force --quiet
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 fetch cypress --tags --force --quiet
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-include/release-v4.2.1 fetch cypress --tags --force --quiet
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 fetch cypress --tags --force --quiet
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 fetch cypress --tags --force --quiet
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 fetch cypress --tags --force --quiet
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 fetch cypress --tags --force --quiet
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 checkout release-v4.2.0
-HEAD is now at 76ea3bc Upload btsdk-ota 4.2.0.11524 [916]
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 checkout release-v4.2.0
-Finished processing btsdk-ota
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 fetch cypress --tags --force --quiet
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0 checkout release-v3.3.0
 HEAD is now at e712ae8 Upload TARGET_CYBLE-333074-EVAL-M2B 3.3.0.23146
 M	CYBLE-333074-EVAL-M2B.mk
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 fetch cypress --tags --force --quiet
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 checkout release-v4.2.0
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0 checkout release-v3.3.0
 Finished processing TARGET_CYBLE-333074-EVAL-M2B
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 checkout release-v3.3.0
+HEAD is now at 76ea3bc Upload btsdk-ota 4.2.0.11524 [916]
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-ota/release-v4.2.0 checkout release-v4.2.0
+Finished processing btsdk-ota
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 checkout release-v3.3.0
 HEAD is now at 9c267c4 Upload btsdk-peer-apps-ota 3.3.0.23146
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-peer-apps-ota/release-v3.3.0 checkout release-v3.3.0
 Finished processing btsdk-peer-apps-ota
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 checkout release-v4.2.1
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 checkout release-v3.3.0
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 fetch cypress --tags --force --quiet
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 checkout release-v3.3.0
-HEAD is now at 745aafa Upload btsdk-common 4.2.1.2932 [1100]
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 checkout release-v4.2.1
 HEAD is now at 8b5d2e2 Upload TARGET_CYBT-213043-EVAL 3.3.0.23146
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBT-213043-EVAL/release-v3.3.0 checkout release-v3.3.0
 Finished processing TARGET_CYBT-213043-EVAL
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 checkout release-v3.3.0
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 checkout release-v4.2.1
-Finished processing btsdk-common
 Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-include/release-v4.2.1 checkout release-v4.2.1
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 fetch cypress --tags --force --quiet
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 checkout release-v3.3.0
-HEAD is now at
- 832a6d9 Upload TARGET_CYW920819EVB-02 3.3.0.23146
+HEAD is now at 832a6d9 Upload TARGET_CYW920819EVB-02 3.3.0.23146
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYW920819EVB-02/release-v3.3.0 checkout release-v3.3.0
 Finished processing TARGET_CYW920819EVB-02
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 checkout release-v1.9.1
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 checkout release-v3.3.0
+HEAD is now at 745aafa Upload btsdk-common 4.2.1.2932 [1100]
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/libraries/btsdk-common/release-v4.2.1 checkout release-v4.2.1
+Finished processing btsdk-common
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 checkout release-v4.2.0
 HEAD is now at 3338ff8 Upload btsdk-include 4.2.1.2932 [1100]
+HEAD is now at 0943e94 Upload btsdk-tools 3.3.0.23146
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-include/release-v4.2.1 checkout release-v4.2.1
 Finished processing btsdk-include
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 checkout release-v4.2.1
-HEAD is now at 251ade9 Upload core-make 1.9.1.3159
-HEAD is now at 0943e94 Upload btsdk-tools 3.3.0.23146
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 checkout release-v1.9.1
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/btsdk-tools/release-v3.3.0 checkout release-v3.3.0
 Finished processing btsdk-tools
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 checkout release-v1.9.1
-Finished processing core-make
-Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 checkout release-v4.2.0
-HEAD is now at b46dc35 Upload 20835B1 4.2.1.2932 [1100]
-Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 checkout release-v4.2.1
-Finished processing 20835B1
+Starting: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 checkout release-v4.2.1
 HEAD is now at 29d3764 Upload btsdk-utils 4.2.0.11524 [916]
 Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/tools/btsdk-utils/release-v4.2.0 checkout release-v4.2.0
 Finished processing btsdk-utils
+HEAD is now at 251ade9 Upload core-make 1.9.1.3159
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/core-make/release-v1.9.1 checkout release-v1.9.1
+Finished processing core-make
+HEAD is now at b46dc35 Upload 20835B1 4.2.1.2932 [1100]
+Success: git -C C:/Users/Usuario1/mtw/mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1 checkout release-v4.2.1
+Finished processing 20835B1
 Fetched all assets for the project directory 'C:/Users/Usuario1/mtw/BLE2_POE_V3.0_C'.
 Writing the file 'C:/Users/Usuario1/mtw/BLE2_POE_V3.0_C/libs/app.mk'.
 Successfully committed changes to the project 'OTA_FirmwareUpgrade'.
@@ -266,7 +265,7 @@ Calling "make eclipse" ...
 Searching installed tools in progress...
 Searching installed tools complete
 CYBLE-333074-EVAL-M2B.mk: ../mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0/CYBLE-333074-EVAL-M2B.mk
-Log file= "C:/Users/Usuario1/AppData/Local/Temp/device-configurator-cli/device-configurator-cli-20231121.141234.183-8032.log"
+Log file= "C:/Users/Usuario1/AppData/Local/Temp/device-configurator-cli/device-configurator-cli-20240110.161048.507-14196.log"
 Command line= "C:/Users/Usuario1/ModusToolbox/tools_3.0/device-configurator/device-configurator-cli.exe --library ../mtb_shared/wiced_btsdk/dev-kit/baselib/20835B1/release-v4.2.1/COMPONENT_20835B1/devicesupport.xml --build ../mtb_shared/wiced_btsdk/dev-kit/bsp/TARGET_CYBLE-333074-EVAL-M2B/release-v3.3.0/COMPONENT_bsp_design_modus/design.modus --check-mcu=CYBLE-333074-02 --check-coprocessors= --readonly --skip-build"
 C:/Users/Usuario1/mtw/BLE2_POE_V3.0_C/build/CYBLE-333074-EVAL-M2B/Debug/OTA_FirmwareUpgrade.ld already present, use clean if it needs updating
 Prebuild operations complete
