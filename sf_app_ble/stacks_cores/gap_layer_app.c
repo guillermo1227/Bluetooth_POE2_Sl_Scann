@@ -142,18 +142,17 @@ wiced_result_t beacon_management_callback(wiced_bt_management_evt_t event, wiced
     case BTM_ENABLED_EVT:
         beacon_init();
         config_Transceiver();
-        //start_observe();
+        start_observe();
         set_outPuts();
-        //set_intPuts();
-        //register_pin_interrupt();
         config_clk_timers();
-        //start_BTimers2();
         start_BTimers();
-        //set_rssi();
+
         WICED_BT_TRACE("FLAG_RSSI: %B\n", data_rssi_save1);
         //--------------------------------------------
+        /* Send configuration of RED */
+        WICED_BT_TRACE("\n \n");
 
-		wiced_bt_gatt_register( app_gatt_callback );      //Cuando lemando algun caracter por el telefono aqui llega ese caracter  ****************
+		wiced_bt_gatt_register( app_gatt_callback );
 		wiced_bt_gatt_db_init( gatt_database, gatt_database_len );
 
 		/* Enable/disable pairing */
@@ -755,18 +754,8 @@ void rx_cback( void *data )
 		    	char first_word[12]; /* ServerIP is good*/
 		    	memcpy(first_word,texto_global,11);
 
-		    	if(memcmp(first_word,"set scanner", sizeof("set scanner"))==0)
-		    	{
-		    		choos_what_scaner(texto_global, data2, data3);
-		        }
-		    	else if(memcmp(first_word,"keep",strlen("keep"))==0)
-		    	{
-		    		wiced_hal_write_nvram( WICED_NVRAM_VSID_START+1, sizeof(data_ma_save2), &data_ma_save2[0], &status111 );
-		    		wiced_hal_write_nvram( WICED_NVRAM_VSID_START+2, sizeof(data2), &data2[0], &status22 );
-		    		wiced_hal_write_nvram( WICED_NVRAM_VSID_START+3, sizeof(data3), &data3[0], &status33 );
-		    		WICED_BT_TRACE("\n Information stored in EEPROM \n");
-		    	}
-		    	else if(first_word[0] == 'E')
+
+		    	if(first_word[0] == 'E')  //
 		    	{
 		    		process_led(texto_global);
 		    	}
@@ -786,8 +775,6 @@ void rx_cback( void *data )
 		    	{
 		    		successful_data();
 		    	}
-		    		//else if(strstr(texto_global, "reboot"))wiced_hal_wdog_reset_system ();
-		    	//else WICED_BT_TRACE("\n Wrong comand.....");
 
 		        //Limpio todo
 		        memset(first_word,'\0',12);
@@ -825,8 +812,8 @@ void process_change(uint8_t *data_change,uint16_t data_len)
     	memcpy(&all_buffer[10],&data_t[4],strlen(data_t));
     	//WICED_BT_TRACE("\n %s\n", all_buffer);
     	/* Prendido y apagado de Led de recepcion de datos */
-    	wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
-    	init_timer();
+    	//wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);  //Checar
+    	//init_timer();
     	flag_send_mac=1;
     }
     						/* CMA */				/* ChangeIP: 1.10.aaa        XXX.XXX.XXX.XXX */
@@ -838,8 +825,8 @@ void process_change(uint8_t *data_change,uint16_t data_len)
     	memcpy(&all_buffer[26],&data_t[4],strlen(data_t));
     	//WICED_BT_TRACE("\n %s %s\n", all_buffer, &all_buffer[26]);
     	/* Prendido y apagado de Led de recepcion de datos */
-    	wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
-    	init_timer();
+    	//wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
+    	//init_timer();
     	flag_send_mac = 2;
     }
     						/* CGA */              /* ChangeIP: aaa.aaa.aaa.aaa bbb.bbb.bbb.bbb XXX.XXX.XXX.XXX */
@@ -851,8 +838,8 @@ void process_change(uint8_t *data_change,uint16_t data_len)
         	memcpy(&all_buffer[42],&data_t[4],strlen(data_t));
         	//WICED_BT_TRACE("\n %s %s %s\n", all_buffer, &all_buffer[26], &all_buffer[42]);
         	/* Prendido y apagado de Led de recepcion de datos */
-        	wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
-        	init_timer();
+        	//wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
+        	//init_timer();
         	flag_send_mac = 3;
         }
     						/* CD1 */              /* ChangeIP: aaa.aaa.aaa.aaa bbb.bbb.bbb.bbb ccc.ccc.ccc.ccc XXX.XXX.XXX.XXX */
@@ -864,8 +851,8 @@ void process_change(uint8_t *data_change,uint16_t data_len)
             	memcpy(&all_buffer[58],&data_t[4],strlen(data_t));
             	//WICED_BT_TRACE("\n %s %s %s %s\n", all_buffer, &all_buffer[26], &all_buffer[42],&all_buffer[58]);
             	/* Prendido y apagado de Led de recepcion de datos */
-            	wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
-            	init_timer();
+            	//wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
+            	//init_timer();
             	flag_send_mac = 4;
             }
 							/* CD2 */              /* ChangeIP: aaa.aaa.aaa.aaa bbb.bbb.bbb.bbb ccc.ccc.ccc.ccc ddd.ddd.ddd.ddd XXX.XXX.XXX.XXX */
@@ -877,8 +864,8 @@ void process_change(uint8_t *data_change,uint16_t data_len)
     			memcpy(&all_buffer[74],&data_t[4],strlen(data_t));
     			//WICED_BT_TRACE("\n %s %s %s %s %s\n", all_buffer, &all_buffer[26], &all_buffer[42],&all_buffer[58],&all_buffer[74]);
     			/* Prendido y apagado de Led de recepcion de datos */
-    			wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
-    			init_timer();
+    			//wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
+    			//init_timer();
     			flag_send_mac = 5;
     		}
     else if(memcmp(hola,data_t, 5)== 0)
@@ -889,7 +876,7 @@ void process_change(uint8_t *data_change,uint16_t data_len)
      if(flag_send_mac == 5)
      {
     	 WICED_BT_TRACE("%s %s %s %s %s\n", all_buffer, &all_buffer[26], &all_buffer[42],&all_buffer[58],&all_buffer[74]);
-    	 wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
+    	 //wiced_hal_gpio_configure_pin(WICED_P26, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);
     	 //init_timer();
     	 //successful_data();
     	 flag_send_mac = 0;
@@ -922,17 +909,4 @@ void process_change(uint8_t *data_change,uint16_t data_len)
     memset(data_t,'\0',20);
     //memset(all_buffer,'\0',90);
     //
-}
-
-/* Values ​​set by the scanner when the keep command is sentValues ​​set by the scanner when the keep button is pressed through the UART */
-static int valor_timer=0;
-extern void f_timer_NVRAM(TIMER_PARAM_TYPE arg)
-{
-				    numbytes2 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+2, sizeof(data2), &data2[0], &status2 );
-				    numbytes3 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+3, sizeof(data3), &data3[0], &status3 );
-				    timer_init_scann(data2,data3);
-				    //WICED_BT_TRACE("\n dejo la te ? %c\n",data_ma_save[69]);
-				    valor_timer++;
-				    if(valor_timer==1)
-				    	stop_timer_NVRAM();
 }

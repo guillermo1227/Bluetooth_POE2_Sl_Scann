@@ -77,16 +77,16 @@ volatile wiced_bt_cfg_settings_t app_cfg_settings2 =
         /* Advertisement scan configuration */
         .high_duty_scan_interval         = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,               /**< High duty scan interval */
         .high_duty_scan_window           = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                 /**< High duty scan window */
-        .high_duty_scan_duration         = 0,                                                          /**< High duty scan duration in seconds (0 for infinite) */
+        .high_duty_scan_duration         = 0,                                                          /**< High duty scan duration in seconds (0 for infinite) */ /* Con esto controlo el tiempo de sacnner*/
 
-        .low_duty_scan_interval          = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                /**< Low duty scan interval  */
-        .low_duty_scan_window            = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                  /**< Low duty scan window */
-        .low_duty_scan_duration          = 0,                                                          /**< Low duty scan duration in seconds (0 for infinite) */
+        .low_duty_scan_interval          = 384,                /**< Low duty scan interval  */
+        .low_duty_scan_window            = 192,                  /**< Low duty scan window */
+        .low_duty_scan_duration          = 0,                                                          /**< Low duty scan duration in seconds (0 for infinite) */  /* Con esto controlo el tiempo de sacnner*/
 
         /* Connection scan configuration */
         .high_duty_conn_scan_interval    = WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_INTERVAL,          /**< High duty cycle connection scan interval */
         .high_duty_conn_scan_window      = WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_WINDOW,            /**< High duty cycle connection scan window */
-        .high_duty_conn_duration         = 30,                                                         /**< High duty cycle connection duration in seconds (0 for infinite) */
+        .high_duty_conn_duration         = 30,                                                       /**< High duty cycle connection duration in seconds (0 for infinite) */
 
         .low_duty_conn_scan_interval     = WICED_BT_CFG_DEFAULT_LOW_DUTY_CONN_SCAN_INTERVAL,           /**< Low duty cycle connection scan interval */
         .low_duty_conn_scan_window       = WICED_BT_CFG_DEFAULT_LOW_DUTY_CONN_SCAN_WINDOW,             /**< Low duty cycle connection scan window */

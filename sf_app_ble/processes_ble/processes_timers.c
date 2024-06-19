@@ -126,63 +126,63 @@ void    f_clear10( uint32_t data )
 
 void      f_gap( uint32_t data )
 {
-	if(!value_le)
-	{
-	//WICED_BT_TRACE("GAP TR\n");
-	if( GPIO_PIN_OUTPUT_HIGH == wiced_hal_gpio_get_pin_output(LED_GPIO_05 ) )
-	{
-		 //wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_LOW);
-		 WICED_BT_TRACE( "GAP A\n\r" );
-		 gap_transferA();
-		 //gap_t1 = WICED_FALSE;
-
-	}
-	else
-	{
-		 //wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_HIGH);
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_HIGH);
-		 WICED_BT_TRACE( "GAP B\n\r" );
-		 gap_transferB();
-		 //gap_t1 = WICED_TRUE;
-		 //value_gap =  WICED_TRUE;
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
-		 //print_cst();
-
-	}
-	}
+//	if(!value_le)
+//	{
+//	//WICED_BT_TRACE("GAP TR\n");
+//	if( GPIO_PIN_OUTPUT_HIGH == wiced_hal_gpio_get_pin_output(LED_GPIO_05 ) )
+//	{
+//		 //wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_LOW);
+//		 WICED_BT_TRACE( "GAP A\n\r" );
+//		 gap_transferA();
+//		 //gap_t1 = WICED_FALSE;
+//
+//	}
+//	else
+//	{
+//		 //wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_HIGH);
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_HIGH);
+//		 WICED_BT_TRACE( "GAP B\n\r" );
+//		 gap_transferB();
+//		 //gap_t1 = WICED_TRUE;
+//		 //value_gap =  WICED_TRUE;
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
+//		 //print_cst();
+//
+//	}
+//	}
 
 }
 
 void      f_timer_return( uint32_t data )
 {
-	WICED_BT_TRACE("Enter return\n");
-	gap_transferA();
-	//wiced_hal_wdog_reset_system ();
-	//beacon_set_app_advertisement_data4();
-	wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
-	wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
-    value_gap = WICED_TRUE;
+//	WICED_BT_TRACE("Enter return\n");
+//	gap_transferA();
+//	//wiced_hal_wdog_reset_system ();
+//	//beacon_set_app_advertisement_data4();
+//	wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
+//	wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
+//    value_gap = WICED_TRUE;
 }
 
 extern uint8_t i_am_in;
 extern uint8_t timer_confirm;
 void      f_timer_returnfA( uint32_t data )
 {
-	//WICED_BT_TRACE("Enter returnfA\n");
-    value_AL=WICED_FALSE;
-	wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
-	i_am_in=0;
-	timer_confirm = 10;  //El valor de 10 solo es una marca, n significa nada
+//	//WICED_BT_TRACE("Enter returnfA\n");
+//    value_AL=WICED_FALSE;
+//	wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
+//	i_am_in=0;
+//	timer_confirm = 10;  //El valor de 10 solo es una marca, n significa nada
 }
 
 void      f_timer_returnfAV( uint32_t data )
 {
-	//WICED_BT_TRACE("Enter returnfAV\n");
-	  value_AV=WICED_FALSE;
-	wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
+//	//WICED_BT_TRACE("Enter returnfAV\n");
+//	  value_AV=WICED_FALSE;
+//	wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
 }
 
 void      f_timer_returnfB( uint32_t data )
@@ -301,27 +301,27 @@ void      f_timer_EA( uint32_t data )
 void      f_timer_er( uint32_t data )
 {
 
-	if(!gap_t1)
-	{
-	if( value_le == WICED_FALSE )
-	{
-	 gap_transferER();
-	 value_le = WICED_TRUE;
-	 //wiced_hal_gpio_set_pin_output( LED_GPIO_17, GPIO_PIN_OUTPUT_HIGH);
-	 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_HIGH);
-	 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_HIGH);
-	 wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
-	}
-	else
-	{
-		 gap_transferA();
-		 value_le = WICED_FALSE;
-		 //wiced_hal_gpio_set_pin_output( LED_GPIO_17, GPIO_PIN_OUTPUT_LOW);
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_LOW);
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
-		 wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
-	}
-	}
+//	if(!gap_t1)
+//	{
+//	if( value_le == WICED_FALSE )
+//	{
+//	 gap_transferER();
+//	 value_le = WICED_TRUE;
+//	 //wiced_hal_gpio_set_pin_output( LED_GPIO_17, GPIO_PIN_OUTPUT_HIGH);
+//	 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_HIGH);
+//	 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_HIGH);
+//	 wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
+//	}
+//	else
+//	{
+//		 gap_transferA();
+//		 value_le = WICED_FALSE;
+//		 //wiced_hal_gpio_set_pin_output( LED_GPIO_17, GPIO_PIN_OUTPUT_LOW);
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_05, GPIO_PIN_OUTPUT_LOW);
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_04, GPIO_PIN_OUTPUT_LOW);
+//		 wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
+//	}
+//	}
 }
 void      f_timer_ach( uint32_t data )
 {

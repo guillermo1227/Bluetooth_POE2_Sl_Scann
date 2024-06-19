@@ -62,21 +62,20 @@ wiced_timer_t timer_ip_new;
 wiced_timer_t timer_mac;
 wiced_timer_t timer_coenction;
 wiced_timer_t timer_error;
-wiced_timer_t timer_NVRAM;
+wiced_timer_t timer_Observ;
 
 
 void config_clk_timers(void)
 {
 
-    wiced_init_timer( &timer_gap, f_gap, 0, WICED_SECONDS_TIMER);
+    //wiced_init_timer( &timer_gap, f_gap, 0, WICED_SECONDS_TIMER);
     wiced_init_timer( &timer_ip, f_timer_LedIP, 0, WICED_MILLI_SECONDS_TIMER);
     wiced_init_timer( &timer_ip_new, f_timer_LedIP_new, 0, WICED_MILLI_SECONDS_TIMER);
 
     wiced_init_timer( &timer_mac, f_timer_LedMAC, 0, WICED_MILLI_SECONDS_TIMER);
     wiced_init_timer( &timer_coenction, f_timer_LedConection, 0, WICED_MILLI_SECONDS_TIMER);
     wiced_init_timer( &timer_error, f_timer_LedError, 0, WICED_MILLI_SECONDS_TIMER);
-    wiced_init_timer ( &timer_NVRAM, f_timer_NVRAM, 0, WICED_SECONDS_PERIODIC_TIMER);
-
+    wiced_init_timer( &timer_Observ, f_timer_Observ, 0, WICED_SECONDS_TIMER);
 
 }
 
@@ -87,7 +86,7 @@ void star_count_RSSI(void)
 
 void stop_count_RSSI(void)
 {
-	wiced_stop_timer( &timer_NVRAM);
+	//wiced_stop_timer( &timer_NVRAM);
 }
 
 void start_BTimers(void)
@@ -95,7 +94,8 @@ void start_BTimers(void)
 //    wiced_start_timer( &timer_Online, 3000);
 //    //wiced_start_timer( &timer_st_Online, clock_st_Online);
 //	wiced_start_timer( &timer_contM, 4000);
-	 wiced_start_timer( &timer_NVRAM, 1 );
+	 //wiced_start_timer( &timer_NVRAM, 1 );
+	wiced_start_timer( &timer_Observ,7);
 }
 
 
@@ -272,15 +272,15 @@ void start_Timer_Error(uint8_t type_error)
 	{
 			if(error != 5)
 			{
-				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
+				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);		//C
+				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
 				wiced_start_timer(&timer_error, 1000);
 			}
 
 			else if(error == 5)
 			{
-				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);       //C
+				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 				wiced_start_timer(&timer_error, 1000);
 				error = -1;
 				//WICED_BT_TRACE("\n Bajo la bandera en TE1 \n");
@@ -292,26 +292,26 @@ void start_Timer_Error(uint8_t type_error)
 		{
 				if(error != 2 && error != 4 && error != 5)
 				{
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);		//C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
 					wiced_start_timer(&timer_error, 1000);
 				}
 				else if(error == 2)
 				{
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);       //C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 					wiced_start_timer(&timer_error, 1000);
 				}
 				else if(error == 4)
 				{
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 					wiced_start_timer(&timer_error, 1000);
 				}
 				else if(error == 5)
 				{
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);		//C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
 					wiced_start_timer(&timer_error, 1000);
 					flag_error=0;
 					/* Under the flag in TE2 */
@@ -323,26 +323,26 @@ void start_Timer_Error(uint8_t type_error)
 			{
 					if(error != 1 && error != 3 && error != 5)
 					{
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);		//C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
 						wiced_start_timer(&timer_error, 1000);
 					}
 					else if(error == 1)
 					{
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 						wiced_start_timer(&timer_error, 1000);
 					}
 					else if(error == 3)
 					{
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 						wiced_start_timer(&timer_error, 1000);
 					}
 					else if(error == 5)
 					{
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 						wiced_start_timer(&timer_error, 1000);
 						error = -1;
 						/* Under the flag in TE3 */
@@ -359,8 +359,4 @@ void stop_Timer_Error(void)
 	wiced_stop_timer(&timer_error);
 }
 
-extern void 	 stop_timer_NVRAM(void)
-{
-	wiced_stop_timer( &timer_NVRAM);
-}
 

@@ -38,6 +38,12 @@ uint16_t        numbytes11;
 wiced_result_t  status13;
 uint16_t        numbytes13;
 
+wiced_result_t  status15;
+uint16_t        numbytes15;
+
+wiced_result_t  status16;
+uint16_t        numbytes16;
+
 uint8_t data_f[3];
 
 
@@ -79,6 +85,7 @@ uint8_t flag6  = 0;
 uint8_t flag11 = 0;
 uint8_t flag13 = 0;
 uint8_t flag_pwd = 0;
+uint8_t flag15 = 0;
 
 uint8_t dla = 0;
 uint8_t dlb = 0;
@@ -88,6 +95,8 @@ int cv1,cv2,cv3;
 
 unsigned char data_bn_save[10];
 unsigned char data_ma_save[6];
+unsigned char mac_poe_save[6];
+
 unsigned char data_flash[20];
 unsigned char data_rssi_save1[10];
 uint8_t data_uuid[16];

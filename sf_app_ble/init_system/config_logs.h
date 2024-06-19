@@ -18,6 +18,8 @@ extern uint8_t flag5;
 extern uint8_t flag6;
 extern uint8_t flag11;
 
+extern uint8_t flag15;
+
 uint8_t Uart_u8TxBuffer[1];
 uint8_t Adc_value[1];
 
@@ -53,6 +55,12 @@ extern uint16_t        numbytes8;
 extern wiced_result_t  status11;
 extern uint16_t        numbytes11;
 
+extern wiced_result_t  status15;    /* POE NVRAM */
+extern uint16_t        numbytes15;  /* POE NVRAM */
+
+extern wiced_result_t  status16;    /* POE NVRAM */
+extern uint16_t        numbytes16;  /* POE NVRAM */
+
 wiced_result_t  status12;
 uint16_t        numbytes12;
 
@@ -62,6 +70,7 @@ extern uint8_t         BT_LOCAL_NAME2[64];
 
 extern unsigned char data_bn_save[10];
 extern unsigned char data_ma_save[6];
+extern unsigned char mac_poe_save[6];   /* POE NVRAM */
 
 #define BT_LOCAL_NAME_DEFAULT  "L4SEC BLE8"
 #define BT_LOCAL_NAME_DEFAULT2 "L4sec BLE8"

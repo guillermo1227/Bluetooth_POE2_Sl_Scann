@@ -73,6 +73,7 @@ extern void      f_timer_EA( uint32_t data );
 extern void      f_timer_er( uint32_t data );
 extern void      f_timer_ach( uint32_t data );
 extern void      f_timer_CER( uint32_t data );
+extern void 	 f_timer_Observ(uint32_t data);
 
 
 

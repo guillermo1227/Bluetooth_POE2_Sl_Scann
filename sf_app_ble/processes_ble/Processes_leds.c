@@ -41,9 +41,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 				stop_Timer_led3();
 				stop_Timer_Error();
 				start_Timer_led(1);
-				wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  //LOW is HIGH
-				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+				wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);  //LOW is HIGH // C
+				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);                // C
+				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);                 // C
 				tart_color_same_time = 0;
 				start_Timer_led(1);
 			}
@@ -56,9 +56,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led2();
 					stop_Timer_led3();
 					stop_Timer_Error();
-					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  // C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);   // C
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);   // C
 					start_Timer_led(2);
 					tart_color_same_time = 0;
 				}
@@ -70,9 +70,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led2();
 					stop_Timer_led3();
 					stop_Timer_Error();
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);     //C
+					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);   //C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);   //C
 					tart_color_same_time = 0;
 				}
 				else if(memcmp("Error01",text,strlen("Error01"))==0)				/* ESTADO: ERROR01 */
@@ -81,9 +81,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led();
 					stop_Timer_led2();
 					stop_Timer_led3();
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);   //C
+					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  //C
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);   //C
 					start_Timer_Error(1);
 					tart_color_same_time = 0;
 				}
@@ -93,9 +93,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led();
 					stop_Timer_led2();
 					stop_Timer_led3();
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);	  //C
+					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);   //C
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);    //C
 					start_Timer_Error(2);
 					tart_color_same_time = 0;
 				}
@@ -106,9 +106,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 						stop_Timer_led();
 						stop_Timer_led2();
 						stop_Timer_Error();
-						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);    //C
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);     //C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);    //C
 						start_Timer_led3();
 						tart_color_same_time = 0;
 						flag_error=0;                                  /* Changes the value of flag_error after the timer is terminated */
@@ -124,9 +124,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led2();
 					stop_Timer_led3();
 					stop_Timer_Error();
-					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);		//C
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);		//C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 					tart_color_same_time = 0;
 				}
 				else if(memcmp("CLIENTE/OFF",text,strlen("CLIENTE/OFF"))==0)		/* The service was disconnected ESTADO: CLIENTE/OFF =RED= */
@@ -135,9 +135,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led2();
 					stop_Timer_led3();
 					stop_Timer_Error();
-					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
+					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);   //C
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);    //C
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);    //C
 					wiced_rtos_delay_milliseconds(2000,ALLOW_THREAD_TO_SLEEP);
 
 					tart_color_same_time = 0;
@@ -154,25 +154,26 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led3();
 					stop_Timer_Error();
 					if(tart_color_same_time == 0)
-					{
-						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  /* Asignacion de IP */
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+					{																	/* Asignacion de IP */
+						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);	//C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
 						wiced_rtos_delay_milliseconds(500,ALLOW_THREAD_TO_SLEEP);
-						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);  //LOW es encenndido
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+																						//LOW es encenndido
+						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  	//C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
 						wiced_rtos_delay_milliseconds(500,ALLOW_THREAD_TO_SLEEP);
 
-						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);
-						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);
+						wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
+						wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);	//C
+						wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);		//C
 						tart_color_same_time=1;
 					}
 					/* Toogle LED light blue */
 					wiced_hal_gpio_set_pin_output( LED_GREEN, ~(wiced_hal_gpio_get_pin_input_status(LED_GREEN)));
 					wiced_hal_gpio_set_pin_output( LED_BLUE, ~(wiced_hal_gpio_get_pin_input_status(LED_BLUE)));
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
 				}
 				else if(memcmp("Error03",text,strlen("Error03"))==0 && queue<=1)	/* ESTADO: Error03  CANNOT LINK TO THE SERVER =Turn HIGH the LED RED= */
 				{
@@ -180,9 +181,9 @@ void process_led(char texto_global[])     //At the beginning of the process the 
 					stop_Timer_led();
 					stop_Timer_led2();
 					stop_Timer_led3();
-					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
+					wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
+					wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);		//C
+					wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);		//C
 					start_Timer_Error(3);
 					tart_color_same_time = 0;
 				}
@@ -209,7 +210,7 @@ void wrong_configuration(char texto_global[])
 {
 	/*ServerIP is good   or ServerIP is wrong*/
 WICED_BT_TRACE("\n :%s \n",texto_global);
-	if(strstr(texto_global,"ServerIPW") || strstr(texto_global,"IPW") || strstr(texto_global,"DHCPW"))// || texto_global[10] == 'g' || texto_global[11] == 'g' || texto_global[12] =='g' || texto_global[13] == 'g' || letra == 'g')
+	if(strstr(texto_global,"ServerIPW") || strstr(texto_global,"IPW") || strstr(texto_global,"DHCPW"))
 		{
 			data_status = WICED_TRUE; 		//------------------>
 		//WICED_BT_TRACE("\n IPconf wrong  ServerIp is worng \n");
@@ -219,23 +220,13 @@ WICED_BT_TRACE("\n :%s \n",texto_global);
 			stop_Timer_Error();
 			//wiced_hal_puart_disable_tx();     /* Desabilito la capacidad de transmitir */
 
-			wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-			wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-			wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
+			wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);		//C
+			wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
+			wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);		//C
 //			wiced_rtos_delay_milliseconds(2000,ALLOW_THREAD_TO_SLEEP);
-//
-//			wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-//			wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-//			wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
-//			wiced_rtos_delay_milliseconds(2000,ALLOW_THREAD_TO_SLEEP);
-//			wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);
-//			wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-//			wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);
-			//data_status = WICED_FALSE;		//<------------------
-			//wiced_hal_puart_enable_tx();     /* Habilito la capacidad de transmitir */
-			//start_Timer_led();   													//BLINK LED EN ROJO
+			//wiced_hal_wdog_reset_system();
 		}
-	else if(strstr(texto_global,"ServerIPG") || strstr(texto_global,"IPG") || strstr(texto_global,"DHCPG")) // || texto_global[10] == 'g' || texto_global[11] == 'g' || texto_global[12] =='g' || texto_global[13] == 'g' || letra == 'g')
+	else if(strstr(texto_global,"ServerIPG") || strstr(texto_global,"IPG") || strstr(texto_global,"DHCPG"))
 		{
 				queue = 0;
 				data_status = WICED_TRUE;		//------------------>
@@ -245,12 +236,12 @@ WICED_BT_TRACE("\n :%s \n",texto_global);
 				stop_Timer_led3();
 				stop_Timer_Error();
 				//wiced_hal_puart_disable_tx();     /* Desabilito la capacidad de transmitir */
-				wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  //LOW es encenndido
-				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+				wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);  //C
+				wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);	  //C
+				wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);	  //C
 
 				//data_status = WICED_FALSE;		//<------------------
-
+				//wiced_hal_wdog_reset_system();
 		}
 
 }
@@ -273,18 +264,18 @@ extern void successful_data(void)
 	stop_Timer_led3();
 	stop_Timer_Error();
 	//wiced_hal_puart_disable_tx();     /* Desabilito la capacidad de transmitir */
-	wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  //LOW es encenndido
-	wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-	wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+	wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);  	//C
+	wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
+	wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
 	wiced_rtos_delay_milliseconds(700,ALLOW_THREAD_TO_SLEEP);
 
-	wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);  //LOW es encenndido
-	wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-	wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+	wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  	//C
+	wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
+	wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
 	wiced_rtos_delay_milliseconds(700,ALLOW_THREAD_TO_SLEEP);
 
-	wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_LOW);  //LOW es encenndido
-	wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_HIGH);
-	wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_HIGH);
+	wiced_hal_gpio_set_pin_output( LED_GREEN, GPIO_PIN_OUTPUT_HIGH);  	//C
+	wiced_hal_gpio_set_pin_output( LED_BLUE, GPIO_PIN_OUTPUT_LOW);		//C
+	wiced_hal_gpio_set_pin_output( LED_RED, GPIO_PIN_OUTPUT_LOW);		//C
 	//wiced_hal_puart_enable_tx();     /* Habilito la capacidad de transmitir */
 }

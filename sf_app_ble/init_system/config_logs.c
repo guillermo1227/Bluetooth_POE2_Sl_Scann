@@ -175,7 +175,7 @@ void   init_config_logs(void)
 void init_mac_logs(void)
 {
 //	   wiced_bt_device_address_t bda;
-//	    numbytes4 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+3, sizeof(flag2), &flag2, &status4 );
+	    //numbytes4 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+3, sizeof(flag2), &flag2, &status4 );
 //	    //WICED_BT_TRACE("FLAG2:%d\n", flag2);
 //
 //	    numbytes5 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+4, sizeof(flag2), &flag3, &status5 );
@@ -224,7 +224,7 @@ void init_mac_logs(void)
 //	  	  WICED_BT_TRACE("Mac Address: %B ", data_ma_save);
 //	  	  //for(int i=0;i< 6; i++){wiced_hal_puart_write(data_ma_save[i]);}
 //		  WICED_BT_TRACE( "\n");
-//	      bda[0]=data_ma_save[0];
+//        bda[0]=data_ma_save[0];
 //	      bda[1]=data_ma_save[1];
 //	      bda[2]=data_ma_save[2];
 //	      bda[3]=data_ma_save[3];
@@ -246,12 +246,49 @@ void init_mac_logs(void)
 //		wiced_bt_ble_address_type_t  macc= BLE_ADDR_PUBLIC_ID;
 //
 //	    wiced_bt_set_local_bdaddr(bda,macc);
-	bda[0]=0xAC;
-	bda[1]=0x32;
-	bda[2]=0x27;
-	bda[3]=0xBD;
-	bda[4]=0x45;
-	bda[5]=0x32;
+
+	numbytes15 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+15, sizeof(flag15), &flag15, &status15 );
+	if(flag15 == 0)
+	{
+		bda[0]=0xAC;
+		bda[1]=0x06;
+		bda[2]=0x27;
+
+		uint8_t i=3;
+		while(i <6)
+		{
+			bda[i] = wiced_hal_rand_gen_num();
+			if(bda[i] > 0 )
+			{
+				i++;
+			}
+			else
+				WICED_BT_TRACE("Mac incorrecta: %d intnta de nuevo\n",bda[i]);
+		}
+		flag15=1;
+		numbytes15 = wiced_hal_write_nvram( WICED_NVRAM_VSID_START+15, sizeof(flag15), &flag15, &status15 );
+
+		numbytes16 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+16, sizeof(mac_poe_save), &mac_poe_save, &status16 );
+		for(int i = 0;i<6;i++)
+		{
+			mac_poe_save[i]=bda[i];
+		}
+		numbytes16 = wiced_hal_write_nvram( WICED_NVRAM_VSID_START+16, sizeof(mac_poe_save), &mac_poe_save, &status16 );
+	}
+	else if(flag15 == 1)
+	{
+		numbytes16 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+16, sizeof(mac_poe_save), &mac_poe_save, &status16 );
+
+		bda[0]=mac_poe_save[0];
+		bda[1]=mac_poe_save[1];
+		bda[2]=mac_poe_save[2];
+		bda[3]=mac_poe_save[3];
+		bda[4]=mac_poe_save[4];
+		bda[5]=mac_poe_save[5];
+	}
+//	bda[3]=0xBD;
+//	bda[4]=0x45;
+//	bda[5]=0x32;
 
 	wiced_bt_ble_address_type_t  macc= BLE_ADDR_PUBLIC_ID;
 

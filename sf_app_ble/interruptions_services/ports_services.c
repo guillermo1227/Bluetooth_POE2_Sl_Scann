@@ -24,8 +24,8 @@
 #include "ports_services.h"
 #include "config_ports.h"
 
-void button_cback_26( void *data, uint8_t port_pin )
-{
+//void button_cback_26( void *data, uint8_t port_pin )
+//{
 	/*if( GPIO_PIN_OUTPUT_HIGH == wiced_hal_gpio_get_pin_output(LED_GPIO_06 ) )
 	{
 		 wiced_hal_gpio_set_pin_output( LED_GPIO_06, GPIO_PIN_OUTPUT_LOW);
@@ -47,7 +47,7 @@ void button_cback_26( void *data, uint8_t port_pin )
 //	{
 //	init_gap();
 //	}
-}
+//}
 
 void button_cback_4( void *data, uint8_t port_pin )
 {

@@ -17,9 +17,9 @@
 #define LED_GPIO_01                              WICED_P01
 #define LED_GPIO_02                              WICED_P02
 #define LED_GPIO_03                              WICED_P03
-#define LED_GPIO_04                              WICED_P04
-#define LED_GPIO_05                              WICED_P05
-#define LED_GPIO_06                              WICED_P06
+//#define LED_GPIO_04                              WICED_P04
+//#define LED_GPIO_05                              WICED_P05
+//#define LED_GPIO_06                              WICED_P06
 #define LED_GPIO_07                              WICED_P07
 #define LED_GPIO_08                              WICED_P08
 //#define LED_GPIO_11                              WICED_P11
@@ -28,9 +28,20 @@
 //#define LED_GPIO_16                              WICED_P16
 //#define LED_GPIO_17                              WICED_P17
 //#define LED_GPIO_25                              WICED_P25
-#define LED_BLUE                          WICED_P08
-#define LED_GREEN                         WICED_P07
-//#define LED_RED                          WICED_P14
+
+/* Leds de antiguo POE */
+//#define LED_BLUE                          WICED_P08
+//#define LED_GREEN                         WICED_P07
+//#define LED_RED                          WICED_P04
+
+///* Leds de nuevo POE */
+//#define LED_BLUE                          WICED_P06
+//#define LED_GREEN                         WICED_P05
+//#define LED_RED                          WICED_P04
+
+/* Leds de nuevo POE  Azul y Verde invrtido */      /*   AZUL y verde = amarillo     Mordad = rojo y azul         */
+#define LED_BLUE                          WICED_P05
+#define LED_GREEN                         WICED_P06
 #define LED_RED                          WICED_P04
 
 //#define LED_BLUE                          WICED_P04

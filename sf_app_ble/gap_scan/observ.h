@@ -17,17 +17,17 @@
 #include "wiced_hal_puart.h"
 #include "wiced_hal_gpio.h"
 
-#define reception_led WICED_P26
 
-//extern char nombre[12], UID[10],flag_name,flag_uid,flag_url;
-//extern char URL[12];
-
-void choos_what_scaner(char texto[], char data2[],char dara3[]);
 void start_call_back_scanner(int savetime);
 void stop_scanner(void);
+void f_timer_Observ(uint32_t data);
+
 extern void timer_init_scann(char data2[],char data3[]);
-char scanner_name[5];
 extern void init_timer(void);
+extern void start_BTimers(void);
+
+void                     start_observe(void);
+char scanner_name[5];
 
 
 #endif /* LIBRERIAS_OBSERV_H_ */

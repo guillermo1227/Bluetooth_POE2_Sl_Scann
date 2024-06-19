@@ -15,7 +15,7 @@
 #define LED_GPIO_01                              WICED_P01
 #define LED_GPIO_02                              WICED_P02
 
-#define LED_GPIO_04                              WICED_P04
+//#define LED_GPIO_04                              WICED_P04
 
 //void                            f_count_RSSI(uint32_t data );
 extern void 					stop_count_RSSI(void);
