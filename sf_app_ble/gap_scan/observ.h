@@ -26,8 +26,8 @@ extern void timer_init_scann(char data2[],char data3[]);
 extern void init_timer(void);
 extern void start_BTimers(void);
 
-void                     start_observe(void);
+void start_observe(void);
 char scanner_name[5];
-
+uint8_t data_mac[6];
 
 #endif /* LIBRERIAS_OBSERV_H_ */

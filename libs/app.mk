@@ -4,74 +4,74 @@
 # the next time 'make getlibs' is run.
 #
 bsp-assistant:
-	(cd Bluetooth_POE; make bsp-assistant)
+	(cd Bluetooth_POE2_Sl_Scann; make bsp-assistant)
 .PHONY: bsp-assistant
 
 config_bt:
-	(cd Bluetooth_POE; make config_bt)
+	(cd Bluetooth_POE2_Sl_Scann; make config_bt)
 .PHONY: config_bt
 
 bt-configurator:
-	(cd Bluetooth_POE; make bt-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make bt-configurator)
 .PHONY: bt-configurator
 
 capsense-configurator:
-	(cd Bluetooth_POE; make capsense-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make capsense-configurator)
 .PHONY: capsense-configurator
 
 capsense-tuner:
-	(cd Bluetooth_POE; make capsense-tuner)
+	(cd Bluetooth_POE2_Sl_Scann; make capsense-tuner)
 .PHONY: capsense-tuner
 
 config:
-	(cd Bluetooth_POE; make config)
+	(cd Bluetooth_POE2_Sl_Scann; make config)
 .PHONY: config
 
 device-configurator:
-	(cd Bluetooth_POE; make device-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make device-configurator)
 .PHONY: device-configurator
 
 config_ezpd:
-	(cd Bluetooth_POE; make config_ezpd)
+	(cd Bluetooth_POE2_Sl_Scann; make config_ezpd)
 .PHONY: config_ezpd
 
 ez-pd-configurator:
-	(cd Bluetooth_POE; make ez-pd-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make ez-pd-configurator)
 .PHONY: ez-pd-configurator
 
 modlibs:
-	(cd Bluetooth_POE; make modlibs)
+	(cd Bluetooth_POE2_Sl_Scann; make modlibs)
 .PHONY: modlibs
 
 library-manager:
-	(cd Bluetooth_POE; make library-manager)
+	(cd Bluetooth_POE2_Sl_Scann; make library-manager)
 .PHONY: library-manager
 
 config_lin:
-	(cd Bluetooth_POE; make config_lin)
+	(cd Bluetooth_POE2_Sl_Scann; make config_lin)
 .PHONY: config_lin
 
 lin-configurator:
-	(cd Bluetooth_POE; make lin-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make lin-configurator)
 .PHONY: lin-configurator
 
 qspi-configurator:
-	(cd Bluetooth_POE; make qspi-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make qspi-configurator)
 .PHONY: qspi-configurator
 
 seglcd-configurator:
-	(cd Bluetooth_POE; make seglcd-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make seglcd-configurator)
 .PHONY: seglcd-configurator
 
 smartio-configurator:
-	(cd Bluetooth_POE; make smartio-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make smartio-configurator)
 .PHONY: smartio-configurator
 
 config_usbdev:
-	(cd Bluetooth_POE; make config_usbdev)
+	(cd Bluetooth_POE2_Sl_Scann; make config_usbdev)
 .PHONY: config_usbdev
 
 usbdev-configurator:
-	(cd Bluetooth_POE; make usbdev-configurator)
+	(cd Bluetooth_POE2_Sl_Scann; make usbdev-configurator)
 .PHONY: usbdev-configurator
 

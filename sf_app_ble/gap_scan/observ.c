@@ -47,12 +47,18 @@ void Observer_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, uin
 		    /* Con p_sacn_reslt le lo que haya llegado, dar clic en para ver estructura wiced_bt_ble_scan_results_t*/
 		    if( p_scan_result)
 		    	{
-		    	for(int i = 0;i<1000;i++)
-		    	{
-
-		    	}
 		    	if(p_scan_result->rssi > -125)
 		    	{
+		    		memcpy(data_mac,p_scan_result->remote_bd_addr,6);
+		    		if(data_mac[0]<1 || data_mac[1]<1 || data_mac[2]<1 || data_mac[3]<1 || data_mac[4]<1 || data_mac[5]<1)
+		    		{
+		    			data_mac[0]=0x1E;
+		    			data_mac[1]=0x1E;
+		    			data_mac[2]=0x1E;
+		    			data_mac[3]=0x1E;
+		    			data_mac[4]=0x1E;
+		    			data_mac[5]=0x1E;
+		    		}
 		    		/****************** Serch name *********************/
 		    		p_name1 = wiced_bt_ble_check_advertising_data( p_adv_data, BTM_BLE_ADVERT_TYPE_NAME_COMPLETE, &length3 );  //BTM_BLE_ADVERT_TYPE_128SRV_COMPLETE
 		    		if(p_name1 != NULL)
@@ -67,7 +73,8 @@ void Observer_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, uin
 					   	   memcmp(scanner_name , "LAIRD",5)==0 ||
 						   memcmp(scanner_name , "LAIRD",5)==0)
 		    			{
-		    				WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d BSL\n", p_scan_result->remote_bd_addr[0],p_scan_result->remote_bd_addr[1],p_scan_result->remote_bd_addr[2],p_scan_result->remote_bd_addr[3],p_scan_result->remote_bd_addr[4],p_scan_result->remote_bd_addr[5],p_scan_result->rssi);
+		    				//WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d BSL\n", p_scan_result->remote_bd_addr[0],p_scan_result->remote_bd_addr[1],p_scan_result->remote_bd_addr[2],p_scan_result->remote_bd_addr[3],p_scan_result->remote_bd_addr[4],p_scan_result->remote_bd_addr[5],p_scan_result->rssi);
+		    				WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d BSL\n", data_mac[0],data_mac[1],data_mac[2],data_mac[3],data_mac[4],data_mac[5],p_scan_result->rssi);
 		    			}
 		    					memset(scanner_name,'\0',5);
 		    		}
@@ -80,9 +87,10 @@ void Observer_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, uin
 		    				memcmp("ACARO",&p_name2[5],5)==0 ||
 							memcmp("SMART",&p_name2[5],5)==0)
 		    			{
-		    				WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d BEA\n", p_scan_result->remote_bd_addr[0],p_scan_result->remote_bd_addr[1],p_scan_result->remote_bd_addr[2],p_scan_result->remote_bd_addr[3],p_scan_result->remote_bd_addr[4],p_scan_result->remote_bd_addr[5],p_scan_result->rssi);
+		    				WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d BEA\n", data_mac[0],data_mac[1],data_mac[2],data_mac[3],data_mac[4],data_mac[5],p_scan_result->rssi);
 		    			}
 		    		}
+		    		memset(data_mac,NULL,6);
 		    	}
 		    	}
 }
