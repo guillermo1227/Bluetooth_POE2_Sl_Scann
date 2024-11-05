@@ -100,5 +100,6 @@ extern void 					choos_what_scaner(char texto_global[], unsigned char data2[],un
 extern void start_call_back_scanner(int time);
 extern void process_led(char texto_global[]);
 extern void wrong_configuration(char texto_global[]);
+void init_values_acarreo(void);
 
 #endif /* SF_APP_BLE_STACKS_CORES_GAP_LAYER_APP_H_ */

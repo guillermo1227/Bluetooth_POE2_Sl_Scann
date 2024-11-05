@@ -33,6 +33,8 @@ start_observe(void){
 
 void Observer_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, uint8_t *p_adv_data )
 {
+
+
 		    wiced_bt_device_address_t static_addr;    //arreglo de 6 unidades static_addr[6]
 		    wiced_bt_dev_read_local_addr(static_addr );  //Read the local device address, means read the own device address
 
@@ -50,31 +52,36 @@ void Observer_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, uin
 		    	if(p_scan_result->rssi > -125)
 		    	{
 		    		memcpy(data_mac,p_scan_result->remote_bd_addr,6);
-		    		if(data_mac[0]<1 || data_mac[1]<1 || data_mac[2]<1 || data_mac[3]<1 || data_mac[4]<1 || data_mac[5]<1)
-		    		{
-		    			data_mac[0]=0x1E;
-		    			data_mac[1]=0x1E;
-		    			data_mac[2]=0x1E;
-		    			data_mac[3]=0x1E;
-		    			data_mac[4]=0x1E;
-		    			data_mac[5]=0x1E;
-		    		}
+
 		    		/****************** Serch name *********************/
 		    		p_name1 = wiced_bt_ble_check_advertising_data( p_adv_data, BTM_BLE_ADVERT_TYPE_NAME_COMPLETE, &length3 );  //BTM_BLE_ADVERT_TYPE_128SRV_COMPLETE
 		    		if(p_name1 != NULL)
 		    		{
+		    			/* Filtro para tag vehiculo y lampara modulo B */
+		    			if(data_mac[0]<1 || data_mac[1]<1 || data_mac[2]<1 || data_mac[3]<1 || data_mac[4]<1 || data_mac[5]<1)
+		    			{
+		    				data_mac[0]=0x1E;
+		    				data_mac[1]=0x1E;
+		    				data_mac[2]=0x1E;
+		    				data_mac[3]=0x1E;
+		    				data_mac[4]=0x1E;
+		    				data_mac[5]=0x1E;
+		    			}
 		    			//Busco lamparas
 		    			memcpy(scanner_name,p_name1,5);
 		    			//WICED_BT_TRACE("\n ->%s ->%s\n",scanner_name,nombre[xn]);
 		    			//WICED_BT_TRACE("\n %d %d ",strlen(nombre[xn]),strlen(scanner_name));
 
 		    			if(memcmp(scanner_name , "L4SEC",5)==0 ||
-		    			   memcmp(scanner_name , "L4SEC",5)==0 ||
-					   	   memcmp(scanner_name , "LAIRD",5)==0 ||
-						   memcmp(scanner_name , "LAIRD",5)==0)
+		    			   memcmp(scanner_name , "L4SEC",5)==0)
 		    			{
 		    				//WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d BSL\n", p_scan_result->remote_bd_addr[0],p_scan_result->remote_bd_addr[1],p_scan_result->remote_bd_addr[2],p_scan_result->remote_bd_addr[3],p_scan_result->remote_bd_addr[4],p_scan_result->remote_bd_addr[5],p_scan_result->rssi);
 		    				WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d BSL\n", data_mac[0],data_mac[1],data_mac[2],data_mac[3],data_mac[4],data_mac[5],p_scan_result->rssi);
+		    			}
+		    			else if(memcmp(scanner_name , "LAIRD",5)==0 ||
+								   memcmp(scanner_name , "LAIRD",5)==0)
+		    			{
+		    				WICED_BT_TRACE("MAC: %02X:%02X:%02X:%02X:%02X:%02X %d VEH\n", data_mac[0],data_mac[1],data_mac[2],data_mac[3],data_mac[4],data_mac[5],p_scan_result->rssi);
 		    			}
 		    					memset(scanner_name,'\0',5);
 		    		}

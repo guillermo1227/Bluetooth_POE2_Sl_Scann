@@ -74,29 +74,29 @@ volatile wiced_bt_cfg_settings_t app_cfg_settings2 =
     {
         .scan_mode                       = BTM_BLE_SCAN_MODE_PASSIVE,                                  /**< BLE scan mode (BTM_BLE_SCAN_MODE_PASSIVE, BTM_BLE_SCAN_MODE_ACTIVE, or BTM_BLE_SCAN_MODE_NONE) */
 
-        /* Advertisement scan configuration */
-        .high_duty_scan_interval         = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,               /**< High duty scan interval */
-        .high_duty_scan_window           = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                 /**< High duty scan window */
+        /* Advertisement scan configuration */  /* 1000 * 1.6 */
+        .high_duty_scan_interval         = 1600,//WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,               /**< High duty scan interval */
+        .high_duty_scan_window           = 1600,WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                 /**< High duty scan window */
         .high_duty_scan_duration         = 0,                                                          /**< High duty scan duration in seconds (0 for infinite) */ /* Con esto controlo el tiempo de sacnner*/
 
-        .low_duty_scan_interval          = 384,//WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                /**< Low duty scan interval  */
-        .low_duty_scan_window            = 170,//WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                  /**< Low duty scan window */
-        .low_duty_scan_duration          = 0,                                                          /**< Low duty scan duration in seconds (0 for infinite) */  /* Con esto controlo el tiempo de sacnner*/
+        .low_duty_scan_interval          = 96,//WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                /**< Low duty scan interval  */
+        .low_duty_scan_window            = 16,//WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,                  /**< Low duty scan window */
+        .low_duty_scan_duration          = .02,//0,                                                          /**< Low duty scan duration in seconds (0 for infinite) */  /* Con esto controlo el tiempo de sacnner*/
 
         /* Connection scan configuration */
         .high_duty_conn_scan_interval    = WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_INTERVAL,          /**< High duty cycle connection scan interval */
         .high_duty_conn_scan_window      = WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_WINDOW,            /**< High duty cycle connection scan window */
         .high_duty_conn_duration         = 30,                                                       /**< High duty cycle connection duration in seconds (0 for infinite) */
 
-        .low_duty_conn_scan_interval     = WICED_BT_CFG_DEFAULT_LOW_DUTY_CONN_SCAN_INTERVAL,           /**< Low duty cycle connection scan interval */
-        .low_duty_conn_scan_window       = WICED_BT_CFG_DEFAULT_LOW_DUTY_CONN_SCAN_WINDOW,             /**< Low duty cycle connection scan window */
-        .low_duty_conn_duration          = 30,                                                         /**< Low duty cycle connection duration in seconds (0 for infinite) */
+        .low_duty_conn_scan_interval     = 0,//WICED_BT_CFG_DEFAULT_LOW_DUTY_CONN_SCAN_INTERVAL,           /**< Low duty cycle connection scan interval */
+        .low_duty_conn_scan_window       = 0,//WICED_BT_CFG_DEFAULT_LOW_DUTY_CONN_SCAN_WINDOW,             /**< Low duty cycle connection scan window */
+        .low_duty_conn_duration          = 0,//30,                                                         /**< Low duty cycle connection duration in seconds (0 for infinite) */
 
         /* Connection configuration */
-        .conn_min_interval               = WICED_BT_CFG_DEFAULT_CONN_MIN_INTERVAL,                     /**< Minimum connection interval */
-        .conn_max_interval               = WICED_BT_CFG_DEFAULT_CONN_MAX_INTERVAL,                     /**< Maximum connection interval */
-        .conn_latency                    = WICED_BT_CFG_DEFAULT_CONN_LATENCY,                          /**< Connection latency */
-        .conn_supervision_timeout        = WICED_BT_CFG_DEFAULT_CONN_SUPERVISION_TIMEOUT,              /**< Connection link supervision timeout */
+        .conn_min_interval               = 80,//WICED_BT_CFG_DEFAULT_CONN_MIN_INTERVAL,                     /**< Minimum connection interval */
+        .conn_max_interval               = 160,//WICED_BT_CFG_DEFAULT_CONN_MAX_INTERVAL,                     /**< Maximum connection interval */
+        .conn_latency                    = 0,//WICED_BT_CFG_DEFAULT_CONN_LATENCY,                          /**< Connection latency */
+        .conn_supervision_timeout        = 400//,WICED_BT_CFG_DEFAULT_CONN_SUPERVISION_TIMEOUT,              /**< Connection link supervision timeout */
     },
 
     .ble_advert_cfg =                                               /* BLE advertisement settings */
